@@ -5,7 +5,9 @@ import * as THREE from "three";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfinity } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { GradientButton } from "@/components/ui/gradient-button"; // Import new button
+import { GradientButton } from "@/components/ui/gradient-button";
+import MobileNav from "@/components/mobile-nav";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Shader code (vertex and fragment) - kept same as aurora-hero
 const vertexShader = `
@@ -40,7 +42,7 @@ const fragmentShader = `
 
 interface AuroraLayoutProps {
   children: ReactNode;
-  currentPage?: "features" | "pricing" | "about" | "home";
+  currentPage?: "features" | "pricing" | "about" | "home" | "partners" | "privacy" | "terms";
 }
 
 export default function AuroraLayout({
@@ -48,6 +50,7 @@ export default function AuroraLayout({
   currentPage,
 }: AuroraLayoutProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -177,41 +180,45 @@ export default function AuroraLayout({
           );
         }
       `}</style>
-      <nav className="relative z-20 w-full px-6 py-4">
-        <div className="max-w-7xl mx-auto flex justify-between font-mono items-center">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
-              <FontAwesomeIcon
-                icon={faInfinity}
-                className="text-white text-sm"
-              />
+      {/* Mobile Navigation */}
+      {isMobile ? (
+        <MobileNav currentPage={currentPage} />
+      ) : (
+        /* Desktop Navigation */
+        <nav className="relative z-20 w-full px-6 py-4">
+          <div className="max-w-7xl mx-auto flex justify-between font-mono items-center">
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
+                <FontAwesomeIcon
+                  icon={faInfinity}
+                  className="text-white text-sm"
+                />
+              </div>
+              <span className="text-white font-medium text-lg geist-font">
+                ThinkRam
+              </span>
+            </Link>
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="/features" className={navLinkClasses("features")}>
+                Features
+              </Link>
+              <Link href="/pricing" className={navLinkClasses("pricing")}>
+                Pricing
+              </Link>
+              <Link href="/about" className={navLinkClasses("about")}>
+                About
+              </Link>
             </div>
-            <span className="text-white font-medium text-lg geist-font">
-              ThinkRam
-            </span>
-          </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/features" className={navLinkClasses("features")}>
-              Features
-            </Link>
-            <Link href="/pricing" className={navLinkClasses("pricing")}>
-              Pricing
-            </Link>
-            <Link href="/about" className={navLinkClasses("about")}>
-              About
-            </Link>
+            <GradientButton
+              variant="variant"
+              size="sm"
+              className="min-w-[100px] px-4 py-2 text-sm"
+            >
+              Launching Soon
+            </GradientButton>
           </div>
-          <GradientButton
-            variant="variant"
-            size="sm"
-            className="min-w-[100px] px-4 py-2 text-sm"
-          >
-            {" "}
-            {/* Adjusted size for nav */}
-            Launching Soon
-          </GradientButton>
-        </div>
-      </nav>
+        </nav>
+      )}
       <div className="relative z-20 divider mb-0"></div>
       <main className="relative z-10">{children}</main>
       <footer className="relative z-10 border-t border-white/10 mt-16 md:mt-24 py-12 md:py-16">
