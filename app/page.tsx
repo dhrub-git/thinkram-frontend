@@ -200,9 +200,9 @@ export default function HomePage() {
             <Image
               src="/ram-framework-v2.png"
               alt="Realise, Accelerate, Modernise Framework Infographic"
-              width={1200}
+              width={800}
               height={400}
-              className="w-full max-w-5xl mx-auto"
+              className="w-full max-w-4xl mx-auto rounded-lg"
             />
           </div>
           <div className="grid md:grid-cols-3 gap-8 text-left">
@@ -302,8 +302,8 @@ export default function HomePage() {
               <Image
                 src="/why-thinkram-v2.png"
                 alt="Abstract network infographic representing trust and execution"
-                width={500}
-                height={250}
+                width={200}
+                height={200}
                 className="w-full rounded-lg"
               />
             </div>

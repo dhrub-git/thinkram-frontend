@@ -94,7 +94,8 @@ export default function ContactPage() {
             Have questions about enterprise engagement, partnership
             opportunities, or getting started with Think RAM? We’re here to
             help.
-            <p>Reach out — let’s start the conversation</p>
+            <br />
+            Reach out — let’s start the conversation
           </p>
         </div>
 
@@ -233,15 +234,6 @@ export default function ContactPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 space-y-1 sm:space-y-0">
                   <a
-                    href="tel:1300901098"
-                    className="text-red-400 hover:text-red-300 transition-colors text-sm sm:text-base"
-                  >
-                    1300 901 098
-                  </a>
-                  <span className="text-gray-300 text-sm sm:text-base hidden sm:inline">
-                    or
-                  </span>
-                  <a
                     href="tel:0405924778"
                     className="text-red-400 hover:text-red-300 transition-colors text-sm sm:text-base"
                   >
@@ -261,7 +253,7 @@ export default function ContactPage() {
                 <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
                   Our Office
                 </h3>
-                <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                <p className="text-red-400 text-sm sm:text-base leading-relaxed">
                   300 Barangaroo Avenue, Sydney, NSW 2000, Australia
                 </p>
               </div>
