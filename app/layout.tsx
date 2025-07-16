@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Think RAM",
   description: "Realise. Accelerate. Modernise.",
   generator: "v0.dev",
+  icons: {
+    icon: "/favicon-xs.png",
+  },
 };
 
 export default function RootLayout({
