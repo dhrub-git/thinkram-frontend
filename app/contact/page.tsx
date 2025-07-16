@@ -92,7 +92,7 @@ export default function ContactPage() {
                   href="mailto:hello@thinkram.com"
                   className="text-red-400 hover:text-red-300 transition-colors"
                 >
-                  contact@thinkram.com
+                  hello@thinkram.com
                 </a>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function ContactPage() {
                   href="tel:+61 405 924 778"
                   className="text-red-400 hover:text-red-300 transition-colors"
                 >
-                  +1 (234) 567-890
+                  +61 405 924 778
                 </a>
               </div>
             </div>
