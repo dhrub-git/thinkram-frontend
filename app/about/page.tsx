@@ -29,7 +29,7 @@ const generalFaqs = [
   },
   {
     q: "What does RAM stand for and how does the RAM Framework work?",
-    a: "RAM stands for Realise, Accelerate, Modernise. It’s our unique end-to-end simple yet effective framework for delivering transformation. You can learn more on our Services page.",
+    a: "RAM stands for Realise, Accelerate, Modernise. It's our unique end-to-end simple yet effective framework for delivering transformation. You can learn more about our approach in our Mission section above.",
   },
   {
     q: "Is Think RAM only for Australian clients and professionals?",
@@ -231,104 +231,183 @@ const TeamMemberCard = ({
   </div>
 );
 
+const ValueCard = ({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) => (
+  <div className="bg-white/5 border border-white/10 rounded-xl p-6 text-left group hover:border-red-500/30 transition-all duration-300">
+    <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4 group-hover:bg-red-500/20 transition-colors">
+      {icon}
+    </div>
+    <h3 className="text-xl font-semibold text-white mb-2 tracking-tight">
+      {title}
+    </h3>
+    <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
+  </div>
+);
+
 export default function AboutPage() {
   return (
     <RedWaveLayout currentPage="about">
+      {/* Hero Section */}
       <section className="py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
-            Why <span className="text-red-500">Enterprises Choose Us</span>
+            About <span className="text-red-500">Think RAM</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 md:mb-16 leading-relaxed">
-            Think RAM bridges the strategy–execution gap with a human-led,
-            AI-powered delivery model—built on 20+ years of real-world
-            transformation experience, tailored for Australia’s enterprise
-            landscape.
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            We exist to shift the odds in digital transformation—building a
+            future where Australia leads the world in responsible, human-led,
+            AI-powered innovation.
           </p>
         </div>
+      </section>
 
+      {/* Story, Vision, Mission Grid */}
+      <section className="py-16 md:py-24 bg-black/20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <WhyThinkRamCard
-              icon={<Rocket className="text-red-400 w-6 h-6" />}
-              title="Execution-First Mindset"
-              description="We bring delivery leadership, architecture, and action plans from the outset—ready to start, not just plan. Built by experts who’ve led billion-dollar transformations."
-              cta="Big Brands talk transformation. We deliver it—with you."
-            />
-            <WhyThinkRamCard
-              icon={<BrainCircuit className="text-red-400 w-6 h-6" />}
-              title="Human-Led, AI-Powered"
-              description="Curated insights and real-time trend analysis from our platform, paired with delivery expertise. Tailored by domain, role, and local context."
-              cta="Traditional analysts give you reports. We give you relevance."
-            />
-            <WhyThinkRamCard
-              icon={<Building className="text-red-400 w-6 h-6" />}
-              title="Built for Australia"
-              description="Our solutions are locally grounded and globally relevant, with frameworks that adapt to your culture, not impose on it. We simplify delivery without sacrificing governance."
-              cta="Large SIs sell armies. We deliver clarity and results."
-            />
-            <WhyThinkRamCard
-              icon={<Scale className="text-red-400 w-6 h-6" />}
-              title="Lean, Transparent, and Trusted"
-              description="Access a high-trust circle of CXOs and delivery leaders. No bloated teams or endless discovery, just transparent engagements with clear accountability."
-              cta="You won’t lose us in a deck. You’ll see us in outcomes."
-            />
-            <WhyThinkRamCard
-              icon={<Handshake className="text-red-400 w-6 h-6" />}
-              title="Built to Partner, Not Compete"
-              description="We work alongside your vendors, teams, and partners—helping you get the best from your ecosystem. We’re your full-spectrum partner."
-              cta="We’re your co-pilot, not a competitor."
-            />
-            <WhyThinkRamCard
-              icon={<GitMerge className="text-red-400 w-6 h-6" />}
-              title="A Platform Ready to Empower"
-              description="We’re growing a high-trust community with actionable playbooks, checklists, and tools. We embed ethical AI and secure-by-design principles from Day 1."
-              cta="Think RAM isn’t just a service—it’s a movement."
-            />
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Story */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">
+                Our <span className="text-red-500">Story</span>
+              </h2>
+              <p className="text-gray-300 leading-relaxed">
+                Think RAM was born out of a deep passion to help enterprises
+                deliver smarter, faster, and more sustainably. We exist to
+                realise a future of transformation success—by enabling leaders,
+                uplifting tech professionals, and unlocking growth for partners.
+              </p>
+            </div>
+
+            {/* Vision */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">
+                Our <span className="text-red-500">Vision</span>
+              </h2>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                A future where Australia leads the world in responsible,
+                human-led, AI-powered digital transformation.
+              </p>
+              <p className="text-gray-300 leading-relaxed text-sm">
+                For two decades, the tech transformation failure rate has sat at
+                75%. We're here to change that.
+              </p>
+            </div>
+
+            {/* Mission */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 tracking-tight">
+                Our <span className="text-red-500">Mission</span>
+              </h2>
+              <p className="text-gray-300 leading-relaxed mb-4 font-semibold">
+                Make strategy executable. Make insights actionable. Make
+                transformation real.
+              </p>
+              <p className="text-gray-300 leading-relaxed text-sm">
+                We combine strategic thinking with grounded, agile delivery so
+                you can accelerate impact without the baggage.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Our Values */}
       <section className="py-16 md:py-24 bg-black/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center tracking-tight">
-            Think RAM Differentiator at a{" "}
-            <span className="text-red-500">Glance</span>
+            Our <span className="text-red-500">Values</span>
           </h2>
-          <DifferentiatorTable />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ValueCard
+              icon={<BrainCircuit className="w-6 h-6 text-red-400" />}
+              title="Human-led. AI-powered."
+              description="We believe in the power of human insight enhanced by artificial intelligence, not replaced by it."
+            />
+            <ValueCard
+              icon={<Rocket className="w-6 h-6 text-red-400" />}
+              title="Practical over theoretical."
+              description="We focus on real-world solutions that deliver measurable outcomes, not just academic concepts."
+            />
+            <ValueCard
+              icon={<Scale className="w-6 h-6 text-red-400" />}
+              title="Transparency over complexity."
+              description="We make complex transformations understandable through clear communication and honest guidance."
+            />
+            <ValueCard
+              icon={<Handshake className="w-6 h-6 text-red-400" />}
+              title="Trust over transaction."
+              description="We build long-term partnerships based on trust, not just short-term project deliverables."
+            />
+            <div className="md:col-span-2 lg:col-span-2">
+              <ValueCard
+                icon={<Building className="w-6 h-6 text-red-400" />}
+                title="Nation-first, impact-focused."
+                description="We're committed to building Australia's digital future through meaningful, sustainable transformation initiatives."
+              />
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* Team Section */}
       <section className="py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center tracking-tight">
-            Meet the <span className="text-red-500">Founders</span>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+            Our <span className="text-red-500">Team</span>
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <TeamMemberCard
-              name="Sarah Chen"
-              title="Co-Founder & CEO"
-              bio="Former Principal at McKinsey Digital, led AI transformations for Fortune 500s. MBA from Wharton."
-              imageUrl="/placeholder.svg?width=128&height=128"
-              linkedin="#"
-              twitter="#"
-            />
-            <TeamMemberCard
-              name="Marcus Rodriguez"
-              title="Co-Founder & CTO"
-              bio="Ex-Google Cloud Staff Engineer, built large-scale AI platforms. PhD in CS from Stanford."
-              imageUrl="/placeholder.svg?width=128&height=128"
-              linkedin="#"
-              twitter="#"
-            />
-            <TeamMemberCard
-              name="Dr. Priya Patel"
-              title="Co-Founder & Chief Strategy Officer"
-              bio="Former Chief Architect at Deloitte, specialized in AI governance. PhD in Org. Psychology."
-              imageUrl="/placeholder.svg?width=128&height=128"
-              linkedin="#"
-              twitter="#"
-            />
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12">
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
+              Led by senior transformation experts who've delivered across $2B+
+              Portfolio, 350+ programs, mentored 1000+ professionals, and built
+              high-trust ecosystems in government and enterprise.
+            </p>
+            <div className="space-y-6">
+              <p className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                Think Strategy. Think Transformation. Think RAM.
+              </p>
+              <p className="text-lg text-gray-300 leading-relaxed italic">
+                Whether you're a leader, builder, or change-maker—Think RAM is
+                where your next chapter begins.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Stats */}
+      <section className="py-16 md:py-24 bg-black/20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+              <p className="text-4xl md:text-5xl font-bold text-red-500 mb-2">
+                $2B+
+              </p>
+              <p className="text-white font-semibold mb-2">Portfolio Value</p>
+              <p className="text-gray-400 text-sm">
+                Transformation programs delivered
+              </p>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+              <p className="text-4xl md:text-5xl font-bold text-red-500 mb-2">
+                350+
+              </p>
+              <p className="text-white font-semibold mb-2">Programs</p>
+              <p className="text-gray-400 text-sm">Successfully executed</p>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+              <p className="text-4xl md:text-5xl font-bold text-red-500 mb-2">
+                100+
+              </p>
+              <p className="text-white font-semibold mb-2">Professionals</p>
+              <p className="text-gray-400 text-sm">Mentored and empowered</p>
+            </div>
           </div>
         </div>
       </section>
@@ -352,6 +431,7 @@ export default function AboutPage() {
         faqs={outcomesFaqs}
       />
 
+      {/* CTA Section */}
       <section className="py-16 md:py-24 bg-black/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
@@ -365,7 +445,7 @@ export default function AboutPage() {
             variant="outline"
             size="lg"
             asChild
-            className="border-red-500 text-white hover:bg-red-500 hover:text-white px-8 sm:px-10 py-4 sm:py-6 text-sm sm:text-base font-semibold bg-transparent min-h-[44px] w-auto"
+            className="border-red-500 text-white hover:bg-red-500 hover:text-white px-10 py-6 text-base font-semibold bg-transparent"
           >
             <a
               href="mailto:careers@thinkram.com"

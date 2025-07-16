@@ -4,6 +4,7 @@ import RedWaveLayout from "@/components/red-wave-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CheckCircle } from "lucide-react";
 import { FaqSection } from "@/components/faq-section";
+import { Button } from "@/components/ui/button";
 
 const enterpriseFaqs = [
   {
@@ -42,6 +43,105 @@ const ServicePillarCard = ({
     <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
       {description}
     </p>
+  </div>
+);
+
+const DifferentiatorTable = () => (
+  <div className="overflow-x-auto rounded-xl border border-white/10">
+    <table className="w-full min-w-[800px] text-sm text-left text-gray-300">
+      <thead className="text-xs sm:text-sm text-white uppercase bg-white/5">
+        <tr>
+          <th
+            scope="col"
+            className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-tl-lg"
+          >
+            Capability
+          </th>
+          <th scope="col" className="px-3 sm:px-4 md:px-6 py-3 sm:py-4">
+            Think RAM
+          </th>
+          <th scope="col" className="px-3 sm:px-4 md:px-6 py-3 sm:py-4">
+            Traditional Consultants
+          </th>
+          <th scope="col" className="px-3 sm:px-4 md:px-6 py-3 sm:py-4">
+            Big SIs
+          </th>
+          <th
+            scope="col"
+            className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-tr-lg"
+          >
+            Boutique Firms
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          {
+            capability: "Core Model",
+            thinkram: "Human-led, AI-powered delivery & community",
+            consultants: "Advisory, frameworks, reports",
+            sis: "Resource augmentation, large-scale implementation",
+            boutiques: "Specialised niche expertise",
+          },
+          {
+            capability: "Key Strength",
+            thinkram: "Strategy-to-execution speed & trust",
+            consultants: "Strategic analysis, industry research",
+            sis: "Scale, process, technical depth",
+            boutiques: "Deep but narrow skill sets",
+          },
+          {
+            capability: "Focus",
+            thinkram: "Outcomes, capability uplift, partnership",
+            consultants: "Recommendations, slide decks",
+            sis: "Inputs, resource hours, project scope",
+            boutiques: "Specific problem-solving",
+          },
+          {
+            capability: "Team Structure",
+            thinkram: "Lean, expert-led, transparent",
+            consultants: "Pyramid structure, leveraged teams",
+            sis: "Large, multi-layered teams",
+            boutiques: "Small, senior-heavy teams",
+          },
+          {
+            capability: "AI Integration",
+            thinkram: "Core to our model (ethically governed)",
+            consultants: "Often theoretical or an add-on service",
+            sis: "Platform-centric, can be siloed",
+            boutiques: "Varies; often tool-specific",
+          },
+          {
+            capability: "Community & Ecosystem",
+            thinkram: "Central to value proposition (nation-building)",
+            consultants: "Alumni network, formal partnerships",
+            sis: "Vendor alliances, user conferences",
+            boutiques: "Limited to informal networks",
+          },
+        ].map((row, index) => (
+          <tr key={index} className="bg-black/20 border-b border-white/10">
+            <th
+              scope="row"
+              className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 font-medium text-white text-xs sm:text-sm"
+            >
+              {row.capability}
+            </th>
+            <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 text-green-400 font-semibold text-xs sm:text-sm leading-relaxed">
+              {row.thinkram}
+            </td>
+            <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 text-xs sm:text-sm leading-relaxed">
+              {row.consultants}
+            </td>
+            <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 text-xs sm:text-sm leading-relaxed">
+              {row.sis}
+            </td>
+            <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 text-xs sm:text-sm leading-relaxed">
+              {row.boutiques}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </div>
 );
 
@@ -165,6 +265,18 @@ export default function ServicesPage() {
   return (
     <RedWaveLayout currentPage="services">
       <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+              Why Choose <span className="text-red-500">Think RAM</span>?
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12">
+              Built by transformation leaders, for transformation leaders
+            </p>
+            <DifferentiatorTable />
+          </div>
+        </div>
+
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
             Our <span className="text-red-500">Services</span>
@@ -313,13 +425,121 @@ export default function ServicesPage() {
       <section className="py-16 md:py-24 bg-black/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
               The <span className="text-red-500">RAM</span> Framework
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12">
               Our full-spectrum model drives successful transformations through
               structured execution, measurable outcomes, and high-trust
               governance.
+            </p>
+
+            <div className="overflow-x-auto rounded-xl border border-white/10 bg-white/5 max-w-4xl mx-auto">
+              <table className="w-full min-w-[600px] text-sm text-left">
+                <thead className="text-xs sm:text-sm text-white uppercase bg-white/10">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-4 sm:px-6 py-3 sm:py-4 font-bold"
+                    >
+                      RAM Phase
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 sm:px-6 py-3 sm:py-4 font-bold"
+                    >
+                      Outputs
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 sm:px-6 py-3 sm:py-4 font-bold"
+                    >
+                      Outcomes
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 sm:px-6 py-3 sm:py-4 font-bold"
+                    >
+                      Checkpoints
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-white/10">
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 font-semibold text-red-400">
+                      Realise
+                    </td>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 text-gray-300 text-xs sm:text-sm">
+                      Strategy, roadmap, architecture, alignment
+                    </td>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 text-gray-300 text-xs sm:text-sm">
+                      Clarity, confidence, investment readiness
+                    </td>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 text-gray-300 text-xs sm:text-sm">
+                      Signed-off roadmap, architecture, stakeholder buy-in
+                    </td>
+                  </tr>
+                  <tr className="border-b border-white/10">
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 font-semibold text-red-400">
+                      Accelerate
+                    </td>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 text-gray-300 text-xs sm:text-sm">
+                      MVPs, dashboards, agile cadence, governance
+                    </td>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 text-gray-300 text-xs sm:text-sm">
+                      Delivery momentum, recovery, execution visibility
+                    </td>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 text-gray-300 text-xs sm:text-sm">
+                      MVP validated, sprints delivered, PMO assurance passed
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 font-semibold text-red-400">
+                      Modernise
+                    </td>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 text-gray-300 text-xs sm:text-sm">
+                      Post-implementation reviews, adoption plans, BAU guides
+                    </td>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 text-gray-300 text-xs sm:text-sm">
+                      Long-term value, sustainable transformation
+                    </td>
+                    <td className="px-4 sm:px-6 py-4 sm:py-6 text-gray-300 text-xs sm:text-sm">
+                      Benefits tracked, adoption achieved, governance scaled
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-lg text-gray-300 mb-6">
+                Want detailed framework information and implementation guides?
+              </p>
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="border-red-500 text-white hover:bg-red-500 hover:text-white px-8 py-4 text-base font-semibold bg-transparent"
+              >
+                <a href="/contact" className="flex items-center justify-center">
+                  Contact Our Team
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DETAILED SERVICE MAPPING SECTION - COMMENTED OUT AS REQUESTED
+      <section className="py-16 md:py-24 bg-black/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+              Detailed <span className="text-red-500">Service</span> Mapping
+            </h2>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              How our services align with the RAM framework phases for
+              comprehensive transformation support.
             </p>
           </div>
 
@@ -368,13 +588,8 @@ export default function ServicesPage() {
               description="Deliver outcomes. Enable speed. Maintain control."
               services={[
                 "End-to-End Program/Project Delivery",
-                "Project Rescue & Re-Alignment",
                 "MVP to Full Product Delivery",
                 "Agile Delivery Coaching",
-                "Vendor/Partner Orchestration",
-                "Product Ownership Support",
-                "PMO-as-a-Service",
-                "Secure-by-Design Implementation",
               ]}
               outputs={[
                 "MVPs & working software",
@@ -438,6 +653,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      */}
       <FaqSection
         title={
           <>
@@ -445,6 +661,7 @@ export default function ServicesPage() {
           </>
         }
         faqs={enterpriseFaqs}
+        className="bg-black/20"
       />
     </RedWaveLayout>
   );

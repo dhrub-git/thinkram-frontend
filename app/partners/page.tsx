@@ -4,7 +4,6 @@ import type React from "react";
 
 import RedWaveLayout from "@/components/red-wave-layout";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CheckCircle, Handshake, Target, TrendingUp, Eye } from "lucide-react";
 import Link from "next/link";
 import { FaqSection } from "@/components/faq-section";
@@ -59,78 +58,16 @@ const ServiceCard = ({ title, items }: { title: string; items: string[] }) => (
     <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 leading-tight">
       {title}
     </h4>
-    <ul className="space-y-1.5 sm:space-y-2">
-      {items.map((item, i) => (
+    <ul className="space-y-2 sm:space-y-3">
+      {items.map((item, index) => (
         <li
-          key={i}
-          className="flex items-start space-x-2 text-xs sm:text-sm text-gray-300"
+          key={index}
+          className="text-gray-300 text-xs sm:text-sm leading-relaxed"
         >
-          <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 mt-0.5 flex-shrink-0" />
-          <span className="leading-relaxed">{item}</span>
+          • {item}
         </li>
       ))}
     </ul>
-  </div>
-);
-
-const RamPhaseDetails = ({
-  outputs,
-  outcomes,
-  checkpoints,
-}: {
-  outputs: string[];
-  outcomes: string[];
-  checkpoints: string[];
-}) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-6">
-    <div className="bg-black/20 p-3 sm:p-4 rounded-lg">
-      <h5 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">
-        Outputs
-      </h5>
-      <ul className="space-y-1.5 sm:space-y-2">
-        {outputs.map((item, i) => (
-          <li
-            key={i}
-            className="flex items-start space-x-2 text-xs sm:text-sm text-gray-300"
-          >
-            <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 mt-0.5 flex-shrink-0" />
-            <span className="leading-relaxed">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div className="bg-black/20 p-3 sm:p-4 rounded-lg">
-      <h5 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">
-        Outcomes
-      </h5>
-      <ul className="space-y-1.5 sm:space-y-2">
-        {outcomes.map((item, i) => (
-          <li
-            key={i}
-            className="flex items-start space-x-2 text-xs sm:text-sm text-gray-300"
-          >
-            <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 mt-0.5 flex-shrink-0" />
-            <span className="leading-relaxed">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div className="bg-black/20 p-3 sm:p-4 rounded-lg sm:col-span-2 lg:col-span-1">
-      <h5 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">
-        Checkpoints
-      </h5>
-      <ul className="space-y-1.5 sm:space-y-2">
-        {checkpoints.map((item, i) => (
-          <li
-            key={i}
-            className="flex items-start space-x-2 text-xs sm:text-sm text-gray-300"
-          >
-            <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 mt-0.5 flex-shrink-0" />
-            <span className="leading-relaxed">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
   </div>
 );
 
@@ -239,113 +176,6 @@ export default function PartnersPage() {
               ]}
             />
           </div>
-        </div>
-      </section>
-
-      {/* RAM Framework for Partners */}
-      <section className="py-16 md:py-24 bg-black/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
-              The <span className="text-red-500">RAM</span> Framework for
-              Partners
-            </h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              A structured, flexible suite of services for partners of all
-              sizes.
-            </p>
-          </div>
-          <Tabs defaultValue="realise" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-6 sm:mb-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-0.5 sm:p-1 min-h-[52px] sm:min-h-[56px]">
-              <TabsTrigger
-                value="realise"
-                className="tab-trigger text-xs sm:text-sm py-2 sm:py-2.5 px-2 sm:px-4 h-full"
-              >
-                Realise
-              </TabsTrigger>
-              <TabsTrigger
-                value="accelerate"
-                className="tab-trigger text-xs sm:text-sm py-2 sm:py-2.5 px-2 sm:px-4 h-full"
-              >
-                Accelerate
-              </TabsTrigger>
-              <TabsTrigger
-                value="modernise"
-                className="tab-trigger text-xs sm:text-sm py-2 sm:py-2.5 px-2 sm:px-4 h-full"
-              >
-                Modernise
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="realise">
-              <RamPhaseDetails
-                outputs={[
-                  "Refined value proposition",
-                  "GTM strategy for public/private sector",
-                  "Drafted product roadmap",
-                  "Validation and Beta Testing plan",
-                  "Partner profile for CXO intros",
-                ]}
-                outcomes={[
-                  "Clear, compelling market position",
-                  "Strategic roadmap for opportunities",
-                  "Market-fit storytelling",
-                  "Internal clarity on growth",
-                ]}
-                checkpoints={[
-                  "GTM narrative approved",
-                  "Product-market fit validated",
-                  "Roadmap aligned with insights",
-                  "Stakeholders aligned on strategy",
-                ]}
-              />
-            </TabsContent>
-            <TabsContent value="accelerate">
-              <RamPhaseDetails
-                outputs={[
-                  "CXO introduction playbook",
-                  "Pilot program opportunities",
-                  "Strategic content (blogs, podcasts)",
-                  "Fractional CIO/CTO sessions",
-                  "Demo and pitch coaching",
-                ]}
-                outcomes={[
-                  "New CXO touchpoints unlocked",
-                  "Thought leadership credibility built",
-                  "Improved win rates",
-                  "Advisory & pilot velocity increased",
-                ]}
-                checkpoints={[
-                  "CXO meeting pipeline initiated",
-                  "Pilot discussions in play",
-                  "Partner featured on platform",
-                  "Advisory sessions in motion",
-                ]}
-              />
-            </TabsContent>
-            <TabsContent value="modernise">
-              <RamPhaseDetails
-                outputs={[
-                  "Long-term roadmap adjustments",
-                  "Executive summary case studies",
-                  "Innovation backlog",
-                  "Subscription to insight streams",
-                  "Annual strategy reset",
-                ]}
-                outcomes={[
-                  "Market traction sustained & scaled",
-                  "Product refined by buyer insights",
-                  "Continued visibility & influence",
-                  "Trusted partner status",
-                ]}
-                checkpoints={[
-                  "Case studies published",
-                  "Partner product referenced",
-                  "Annual health check completed",
-                  "Renewal/scale-up strategy agreed",
-                ]}
-              />
-            </TabsContent>
-          </Tabs>
         </div>
       </section>
 
