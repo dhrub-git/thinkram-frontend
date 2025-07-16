@@ -18,8 +18,10 @@ export default function ContactPage() {
             Get In <span className="text-red-500">Touch</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 md:mb-16 leading-relaxed">
-            We're here to answer your questions, discuss partnership
-            opportunities, or help you get started. Reach out and let's talk.
+            Have questions about enterprise engagement, partnership
+            opportunities, or getting started with Think RAM? We’re here to
+            help.
+            <p>Reach out — let’s start the conversation</p>
           </p>
         </div>
 
