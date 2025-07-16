@@ -3,19 +3,34 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: "Manrope";
+    src: url("/fonts/Manrope-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Manrope";
+    src: url("/fonts/Manrope-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Manrope";
+    src: url("/fonts/Manrope-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Manrope";
+    src: url("/fonts/Manrope-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+  }
+
   body {
-    @apply bg-black text-gray-200; /* Default dark mode styles */
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  }
-
-  .geist-font {
-    font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  }
-
-  .inter-font {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    @apply bg-black text-gray-200;
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
 
@@ -193,78 +208,20 @@
 }
 
 @layer base {
-  /* This is a duplicate @layer base, ensure it's merged or correctly placed */
   * {
     @apply border-border;
   }
-  /* body styling is already in the first @layer base */
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-
-  /* Mobile-specific utilities */
-  .touch-target {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  .safe-area-padding {
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-  }
-  
-  .safe-area-top {
-    padding-top: env(safe-area-inset-top);
-  }
-  
-  .safe-area-bottom {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-
-  /* Dynamic viewport utilities */
-  .h-screen-dynamic {
-    height: 100vh;
-    height: 100dvh;
-  }
-  
-  .min-h-screen-dynamic {
-    min-height: 100vh;
-    min-height: 100dvh;
-  }
-
-  /* Touch-friendly scrolling */
-  .smooth-scroll {
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-  }
-
-  /* Prevent zoom on input focus (iOS) */
-  .no-zoom {
-    font-size: 16px;
-  }
-  
-  @media (max-width: 768px) {
-    .no-zoom {
-      font-size: 16px !important;
-    }
-  }
-
-  /* Better tap highlighting */
-  .tap-highlight-none {
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .tap-highlight-custom {
-    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.3);
-  }
 }
 
 @layer components {
   .gradient-button {
-    @apply relative appearance-none cursor-pointer inter-font font-medium; /* inter-font should now be available */
+    @apply relative appearance-none cursor-pointer font-medium;
     background: radial-gradient(
       var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
       var(--color-1) var(--stop-1),
@@ -339,6 +296,39 @@
     --border-color-1: hsla(320, 75%, 90%, 0.2);
     --border-color-2: hsla(320, 50%, 90%, 0.75);
   }
+
+  .tab-trigger {
+    @apply text-gray-300 data-[state=active]:text-white data-[state=active]:bg-white/10 rounded-lg py-3 px-6 transition-all duration-200 font-semibold;
+  }
+
+  .flip-card {
+    perspective: 1500px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  .group:hover .flip-card-inner,
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem; /* Corresponds to rounded-2xl */
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
 }
 
 @keyframes fadeIn {
@@ -353,4 +343,8 @@
 }
 .group-open\:animate-fadeIn:is(.group[open] *) {
   animation: fadeIn 0.3s ease-out;
+}
+
+.logo-outline {
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.9));
 }
