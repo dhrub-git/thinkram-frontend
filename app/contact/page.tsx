@@ -1,3 +1,5 @@
+"use client";
+
 import RedWaveLayout from "@/components/red-wave-layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,8 +10,79 @@ import {
   faPhone,
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
+
+// Form validation schema matching API route
+const contactSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be less than 100 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  company: z
+    .string()
+    .max(100, "Company name must be less than 100 characters")
+    .optional(),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(2000, "Message must be less than 2000 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      const result = await response.json();
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for your message. We'll get back to you soon.",
+      });
+
+      reset(); // Clear form on success
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again later or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <RedWaveLayout currentPage="contact">
       <section className="py-16 md:py-24">
@@ -30,18 +103,28 @@ export default function ContactPage() {
             <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-6 md:mb-8 tracking-tight">
               Send us a Message
             </h2>
-            <form className="space-y-5 sm:space-y-6">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-5 sm:space-y-6"
+            >
               <div>
                 <label htmlFor="name" className="sr-only">
                   Name
                 </label>
                 <Input
                   id="name"
-                  name="name"
                   type="text"
                   placeholder="Your Name"
-                  className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 h-12 text-base"
+                  className={`bg-white/5 border-white/20 text-white placeholder:text-gray-400 h-12 text-base ${
+                    errors.name ? "border-red-500" : ""
+                  }`}
+                  {...register("name")}
                 />
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-400">
+                    {errors.name.message}
+                  </p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className="sr-only">
@@ -49,11 +132,37 @@ export default function ContactPage() {
                 </label>
                 <Input
                   id="email"
-                  name="email"
                   type="email"
                   placeholder="Your Email"
-                  className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 h-12 text-base"
+                  className={`bg-white/5 border-white/20 text-white placeholder:text-gray-400 h-12 text-base ${
+                    errors.email ? "border-red-500" : ""
+                  }`}
+                  {...register("email")}
                 />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-400">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label htmlFor="company" className="sr-only">
+                  Company
+                </label>
+                <Input
+                  id="company"
+                  type="text"
+                  placeholder="Your Company (Optional)"
+                  className={`bg-white/5 border-white/20 text-white placeholder:text-gray-400 h-12 text-base ${
+                    errors.company ? "border-red-500" : ""
+                  }`}
+                  {...register("company")}
+                />
+                {errors.company && (
+                  <p className="mt-1 text-sm text-red-400">
+                    {errors.company.message}
+                  </p>
+                )}
               </div>
               <div>
                 <label htmlFor="message" className="sr-only">
@@ -61,19 +170,27 @@ export default function ContactPage() {
                 </label>
                 <Textarea
                   id="message"
-                  name="message"
                   placeholder="Your Message"
                   rows={5}
-                  className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 text-base min-h-[120px]"
+                  className={`bg-white/5 border-white/20 text-white placeholder:text-gray-400 text-base min-h-[120px] ${
+                    errors.message ? "border-red-500" : ""
+                  }`}
+                  {...register("message")}
                 />
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-400">
+                    {errors.message.message}
+                  </p>
+                )}
               </div>
               <Button
                 type="submit"
                 variant="outline"
-                className="w-full border-red-500 text-white hover:bg-red-500 hover:text-white bg-transparent h-12 text-base font-semibold"
+                disabled={isSubmitting}
+                className="w-full border-red-500 text-white hover:bg-red-500 hover:text-white bg-transparent h-12 text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 size="lg"
               >
-                Submit Message
+                {isSubmitting ? "Sending..." : "Submit Message"}
               </Button>
             </form>
           </div>
