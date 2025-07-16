@@ -157,7 +157,7 @@ export default function RedWaveLayout({
         className="fixed top-0 left-0 z-0 block w-full h-full"
       ></canvas>
       <div className="relative z-10">
-        <header className="w-full px-6 py-4">
+        <header className="fixed top-0 left-0 w-full px-6 py-4 bg-black/80 backdrop-blur-sm z-20">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <Link href="/">
               <Image
@@ -200,7 +200,7 @@ export default function RedWaveLayout({
             </Button>
           </div>
         </header>
-        <main>{children}</main>
+        <main className="pt-24">{children}</main>
         <footer className="border-t border-white/10 mt-16 md:mt-24 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
