@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import RedWaveLayout from "@/components/red-wave-layout"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CheckCircle, Handshake, Target, TrendingUp, Eye } from "lucide-react"
-import Link from "next/link"
-import { FaqSection } from "@/components/faq-section"
+import RedWaveLayout from "@/components/red-wave-layout";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CheckCircle, Handshake, Target, TrendingUp, Eye } from "lucide-react";
+import Link from "next/link";
+import { FaqSection } from "@/components/faq-section";
 
 const partnerFaqs = [
   {
@@ -30,80 +30,109 @@ const partnerFaqs = [
     q: "What kind of product feedback or roadmap support do partners receive?",
     a: "We provide hands-on feedback from experienced transformation leaders to ensure your offering aligns with real-world demand and enterprise pain points.",
   },
-]
+];
 
 const WhyPartnerCard = ({
   icon,
   title,
   description,
 }: {
-  icon: React.ReactNode
-  title: string
-  description: string
+  icon: React.ReactNode;
+  title: string;
+  description: string;
 }) => (
-  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left">
-    <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">{icon}</div>
-    <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-    <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
+  <div className="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-5 md:p-6 text-left h-full">
+    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-3 sm:mb-4">
+      {icon}
+    </div>
+    <h3 className="text-base sm:text-lg font-semibold text-white mb-2 leading-tight">
+      {title}
+    </h3>
+    <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+      {description}
+    </p>
   </div>
-)
+);
 
 const ServiceCard = ({ title, items }: { title: string; items: string[] }) => (
-  <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-    <h4 className="text-lg font-bold text-white mb-4">{title}</h4>
-    <ul className="space-y-2">
+  <div className="bg-white/5 border border-white/10 rounded-xl p-4 sm:p-5 md:p-6 h-full">
+    <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 leading-tight">
+      {title}
+    </h4>
+    <ul className="space-y-1.5 sm:space-y-2">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start space-x-2 text-sm text-gray-300">
-          <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-          <span>{item}</span>
+        <li
+          key={i}
+          className="flex items-start space-x-2 text-xs sm:text-sm text-gray-300"
+        >
+          <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 mt-0.5 flex-shrink-0" />
+          <span className="leading-relaxed">{item}</span>
         </li>
       ))}
     </ul>
   </div>
-)
+);
 
 const RamPhaseDetails = ({
   outputs,
   outcomes,
   checkpoints,
 }: {
-  outputs: string[]
-  outcomes: string[]
-  checkpoints: string[]
+  outputs: string[];
+  outcomes: string[];
+  checkpoints: string[];
 }) => (
-  <div className="grid md:grid-cols-3 gap-6 mt-6">
-    <div className="bg-black/20 p-4 rounded-lg">
-      <h5 className="font-bold text-white mb-3">Outputs</h5>
-      <ul className="space-y-2">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-6">
+    <div className="bg-black/20 p-3 sm:p-4 rounded-lg">
+      <h5 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">
+        Outputs
+      </h5>
+      <ul className="space-y-1.5 sm:space-y-2">
         {outputs.map((item, i) => (
-          <li key={i} className="flex items-start space-x-2 text-sm text-gray-300">
-            <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" /> <span>{item}</span>
+          <li
+            key={i}
+            className="flex items-start space-x-2 text-xs sm:text-sm text-gray-300"
+          >
+            <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 mt-0.5 flex-shrink-0" />
+            <span className="leading-relaxed">{item}</span>
           </li>
         ))}
       </ul>
     </div>
-    <div className="bg-black/20 p-4 rounded-lg">
-      <h5 className="font-bold text-white mb-3">Outcomes</h5>
-      <ul className="space-y-2">
+    <div className="bg-black/20 p-3 sm:p-4 rounded-lg">
+      <h5 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">
+        Outcomes
+      </h5>
+      <ul className="space-y-1.5 sm:space-y-2">
         {outcomes.map((item, i) => (
-          <li key={i} className="flex items-start space-x-2 text-sm text-gray-300">
-            <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" /> <span>{item}</span>
+          <li
+            key={i}
+            className="flex items-start space-x-2 text-xs sm:text-sm text-gray-300"
+          >
+            <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 mt-0.5 flex-shrink-0" />
+            <span className="leading-relaxed">{item}</span>
           </li>
         ))}
       </ul>
     </div>
-    <div className="bg-black/20 p-4 rounded-lg">
-      <h5 className="font-bold text-white mb-3">Checkpoints</h5>
-      <ul className="space-y-2">
+    <div className="bg-black/20 p-3 sm:p-4 rounded-lg sm:col-span-2 lg:col-span-1">
+      <h5 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">
+        Checkpoints
+      </h5>
+      <ul className="space-y-1.5 sm:space-y-2">
         {checkpoints.map((item, i) => (
-          <li key={i} className="flex items-start space-x-2 text-sm text-gray-300">
-            <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" /> <span>{item}</span>
+          <li
+            key={i}
+            className="flex items-start space-x-2 text-xs sm:text-sm text-gray-300"
+          >
+            <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400 mt-0.5 flex-shrink-0" />
+            <span className="leading-relaxed">{item}</span>
           </li>
         ))}
       </ul>
     </div>
   </div>
-)
+);
 
 export default function PartnersPage() {
   return (
@@ -115,8 +144,9 @@ export default function PartnersPage() {
             Partner with <span className="text-red-500">Think RAM</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We help tech product and service partners build credibility, gain traction, and scale impact across public
-            and private sectors—not just by advising, but by enabling action.
+            We help tech product and service partners build credibility, gain
+            traction, and scale impact across public and private sectors—not
+            just by advising, but by enabling action.
           </p>
         </div>
       </section>
@@ -170,11 +200,19 @@ export default function PartnersPage() {
             />
             <ServiceCard
               title="Strategic Advisory"
-              items={["Fractional CIO / CTO services", "Product strategy & scaling", "Investor & board readiness"]}
+              items={[
+                "Fractional CIO / CTO services",
+                "Product strategy & scaling",
+                "Investor & board readiness",
+              ]}
             />
             <ServiceCard
               title="Product Enablement"
-              items={["Roadmap development", "Use-case localisation", "UX/usability advisory"]}
+              items={[
+                "Roadmap development",
+                "Use-case localisation",
+                "UX/usability advisory",
+              ]}
             />
             <ServiceCard
               title="Growth & Network Access"
@@ -186,7 +224,11 @@ export default function PartnersPage() {
             />
             <ServiceCard
               title="Capability Uplift"
-              items={["Founder & tech lead mentoring", "Product demo refinement", "Strategic content creation"]}
+              items={[
+                "Founder & tech lead mentoring",
+                "Product demo refinement",
+                "Strategic content creation",
+              ]}
             />
             <ServiceCard
               title="Platform Visibility"
@@ -205,21 +247,32 @@ export default function PartnersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
-              The <span className="text-red-500">RAM</span> Framework for Partners
+              The <span className="text-red-500">RAM</span> Framework for
+              Partners
             </h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              A structured, flexible suite of services for partners of all sizes.
+              A structured, flexible suite of services for partners of all
+              sizes.
             </p>
           </div>
           <Tabs defaultValue="realise" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-1">
-              <TabsTrigger value="realise" className="tab-trigger">
+            <TabsList className="grid w-full grid-cols-3 mb-6 sm:mb-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-0.5 sm:p-1 min-h-[52px] sm:min-h-[56px]">
+              <TabsTrigger
+                value="realise"
+                className="tab-trigger text-xs sm:text-sm py-2 sm:py-2.5 px-2 sm:px-4 h-full"
+              >
                 Realise
               </TabsTrigger>
-              <TabsTrigger value="accelerate" className="tab-trigger">
+              <TabsTrigger
+                value="accelerate"
+                className="tab-trigger text-xs sm:text-sm py-2 sm:py-2.5 px-2 sm:px-4 h-full"
+              >
                 Accelerate
               </TabsTrigger>
-              <TabsTrigger value="modernise" className="tab-trigger">
+              <TabsTrigger
+                value="modernise"
+                className="tab-trigger text-xs sm:text-sm py-2 sm:py-2.5 px-2 sm:px-4 h-full"
+              >
                 Modernise
               </TabsTrigger>
             </TabsList>
@@ -308,40 +361,69 @@ export default function PartnersPage() {
       {/* Featured Partners */}
       <section className="py-16 md:py-24 bg-black/20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 tracking-tight">Our Valued Partners</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 tracking-tight">
+            Our Valued Partners
+          </h2>
           <p className="text-gray-400 mb-8">
-            We collaborate with industry leaders to drive innovation. (Logos are for demonstration purposes).
+            We collaborate with industry leaders to drive innovation. (Logos are
+            for demonstration purposes).
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-12 sm:gap-x-16 gap-y-8 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
-            <img src="/techcorp-logo.png" alt="TechCorp Logo" className="h-10" />
-            <img src="/placeholder-3h0yl.png" alt="Innovate Solutions Logo" className="h-10" />
-            <img src="/placeholder-oh7ch.png" alt="DataDriven Inc Logo" className="h-10" />
-            <img src="/cloudpioneers-logo.png" alt="CloudPioneers Logo" className="h-10" />
-            <img src="/quantumleap-logo.png" alt="QuantumLeap Logo" className="h-10" />
-            <img src="/synergy-systems-logo.png" alt="Synergy Systems Logo" className="h-10" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-x-12 xl:gap-x-16 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+            <img
+              src="/techcorp-logo.png"
+              alt="TechCorp Logo"
+              className="h-8 sm:h-10 mx-auto lg:mx-0"
+            />
+            <img
+              src="/placeholder-3h0yl.png"
+              alt="Innovate Solutions Logo"
+              className="h-8 sm:h-10 mx-auto lg:mx-0"
+            />
+            <img
+              src="/placeholder-oh7ch.png"
+              alt="DataDriven Inc Logo"
+              className="h-8 sm:h-10 mx-auto lg:mx-0"
+            />
+            <img
+              src="/cloudpioneers-logo.png"
+              alt="CloudPioneers Logo"
+              className="h-8 sm:h-10 mx-auto lg:mx-0"
+            />
+            <img
+              src="/quantumleap-logo.png"
+              alt="QuantumLeap Logo"
+              className="h-8 sm:h-10 mx-auto lg:mx-0"
+            />
+            <img
+              src="/synergy-systems-logo.png"
+              alt="Synergy Systems Logo"
+              className="h-8 sm:h-10 mx-auto lg:mx-0"
+            />
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 sm:py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to <span className="text-red-500">Accelerate Your Growth?</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 tracking-tight leading-tight">
+            Ready to{" "}
+            <span className="text-red-500">Accelerate Your Growth?</span>
           </h2>
-          <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
-            Let's explore how a partnership with Think RAM can open doors, build credibility, and drive real impact.
+          <p className="text-base sm:text-lg text-gray-300 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
+            Let's explore how a partnership with Think RAM can open doors, build
+            credibility, and drive real impact.
           </p>
           <Button
             variant="outline"
             size="lg"
             asChild
-            className="border-red-500 text-white hover:bg-red-500 hover:text-white px-10 py-6 text-base font-semibold bg-transparent"
+            className="border-red-500 text-white hover:bg-red-500 hover:text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-6 text-sm sm:text-base font-semibold bg-transparent w-full sm:w-auto"
           >
             <Link href="/contact">Become a Partner</Link>
           </Button>
         </div>
       </section>
     </RedWaveLayout>
-  )
+  );
 }

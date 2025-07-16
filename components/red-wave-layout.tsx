@@ -1,10 +1,22 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import * as THREE from "three";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Menu,
+  X,
+  Home,
+  Users,
+  Building2,
+  Handshake,
+  Info,
+  Phone,
+} from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
@@ -88,6 +100,8 @@ export default function RedWaveLayout({
   currentPage,
 }: RedWaveLayoutProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -163,11 +177,13 @@ export default function RedWaveLayout({
               <Image
                 src="/thinkram-logo-white.png"
                 alt="ThinkRam Logo"
-                width={200}
-                height={50}
+                width={isMobile ? 150 : 200}
+                height={isMobile ? 37 : 50}
                 className="logo-outline"
               />
             </Link>
+
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
               <Link href="/" className={navLinkClasses("home")}>
                 Home
@@ -191,13 +207,106 @@ export default function RedWaveLayout({
                 Contact
               </Link>
             </nav>
+
+            {/* Desktop Join Us Button */}
             <Button
               variant="outline"
               asChild
-              className="border-red-500 text-white hover:bg-red-500 hover:text-white bg-transparent"
+              className="hidden md:block border-red-500 text-white hover:bg-red-500 hover:text-white bg-transparent"
             >
               <Link href="/membership">Join Us</Link>
             </Button>
+
+            {/* Mobile Navigation */}
+            <div className="md:hidden flex items-center space-x-4">
+              <Button
+                variant="outline"
+                asChild
+                size="sm"
+                className="border-red-500 text-white hover:bg-red-500 hover:text-white bg-transparent"
+              >
+                <Link href="/membership">Join Us</Link>
+              </Button>
+
+              <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-white hover:text-red-400 p-2"
+                  >
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Open menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent
+                  side="right"
+                  className="w-80 bg-black/95 border-white/10"
+                >
+                  <div className="flex flex-col space-y-6 mt-8">
+                    <Link
+                      href="/"
+                      className="flex items-center space-x-3 text-lg text-white hover:text-red-400 transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Home size={20} className="text-white" />
+                      <span>Home</span>
+                    </Link>
+                    <Link
+                      href="/professionals"
+                      className="flex items-center space-x-3 text-lg text-white hover:text-red-400 transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Users size={20} className="text-white" />
+                      <span>For Professionals</span>
+                    </Link>
+                    <Link
+                      href="/services"
+                      className="flex items-center space-x-3 text-lg text-white hover:text-red-400 transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Building2 size={20} className="text-white" />
+                      <span>For Enterprises</span>
+                    </Link>
+                    <Link
+                      href="/partners"
+                      className="flex items-center space-x-3 text-lg text-white hover:text-red-400 transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Handshake size={20} className="text-white" />
+                      <span>For Partners</span>
+                    </Link>
+                    <Link
+                      href="/about"
+                      className="flex items-center space-x-3 text-lg text-white hover:text-red-400 transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Info size={20} className="text-white" />
+                      <span>About</span>
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="flex items-center space-x-3 text-lg text-white hover:text-red-400 transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Phone size={20} className="text-white" />
+                      <span>Contact</span>
+                    </Link>
+
+                    <div className="pt-6 border-t border-white/10">
+                      <Button
+                        variant="outline"
+                        asChild
+                        className="w-full border-red-500 text-white hover:bg-red-500 hover:text-white bg-transparent"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <Link href="/membership">Join Us</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </header>
         <main className="pt-24">{children}</main>

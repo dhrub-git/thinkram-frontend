@@ -1,11 +1,18 @@
-import type React from "react"
-import RedWaveLayout from "@/components/red-wave-layout"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
-import { Button } from "@/components/ui/button"
-import { Rocket, BrainCircuit, GitMerge, Scale, Handshake, Building } from "lucide-react"
-import { FaqSection } from "@/components/faq-section"
+import type React from "react";
+import RedWaveLayout from "@/components/red-wave-layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "@/components/ui/button";
+import {
+  Rocket,
+  BrainCircuit,
+  GitMerge,
+  Scale,
+  Handshake,
+  Building,
+} from "lucide-react";
+import { FaqSection } from "@/components/faq-section";
 
 const generalFaqs = [
   {
@@ -28,7 +35,7 @@ const generalFaqs = [
     q: "Is Think RAM only for Australian clients and professionals?",
     a: "While we focus on Australia’s digital future, our insights, frameworks, and services are globally relevant and scalable.",
   },
-]
+];
 
 const outcomesFaqs = [
   {
@@ -43,7 +50,7 @@ const outcomesFaqs = [
     q: "Can you share examples or case studies of successful transformation projects?",
     a: "Yes. Members and clients can access anonymised success stories and detailed examples in our member resource hub.",
   },
-]
+];
 
 const WhyThinkRamCard = ({
   icon,
@@ -51,37 +58,51 @@ const WhyThinkRamCard = ({
   description,
   cta,
 }: {
-  icon: React.ReactNode
-  title: string
-  description: string
-  cta: string
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  cta: string;
 }) => (
-  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 text-left flex flex-col">
-    <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-6">{icon}</div>
-    <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 tracking-tight">{title}</h3>
-    <p className="text-gray-300 leading-relaxed text-sm mb-4 flex-grow">{description}</p>
-    <p className="text-red-400 font-semibold text-sm italic">{cta}</p>
+  <div className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 md:p-8 text-left flex flex-col">
+    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4 sm:mb-6">
+      {icon}
+    </div>
+    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-2 sm:mb-3 tracking-tight leading-tight">
+      {title}
+    </h3>
+    <p className="text-gray-300 leading-relaxed text-sm sm:text-base mb-3 sm:mb-4 flex-grow">
+      {description}
+    </p>
+    <p className="text-red-400 font-semibold text-xs sm:text-sm italic leading-relaxed">
+      {cta}
+    </p>
   </div>
-)
+);
 
 const DifferentiatorTable = () => (
-  <div className="overflow-x-auto">
+  <div className="overflow-x-auto rounded-xl border border-white/10">
     <table className="w-full min-w-[800px] text-sm text-left text-gray-300">
-      <thead className="text-xs text-white uppercase bg-white/5">
+      <thead className="text-xs sm:text-sm text-white uppercase bg-white/5">
         <tr>
-          <th scope="col" className="px-6 py-3 rounded-tl-lg">
+          <th
+            scope="col"
+            className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-tl-lg"
+          >
             Capability
           </th>
-          <th scope="col" className="px-6 py-3">
+          <th scope="col" className="px-3 sm:px-4 md:px-6 py-3 sm:py-4">
             Think RAM
           </th>
-          <th scope="col" className="px-6 py-3">
+          <th scope="col" className="px-3 sm:px-4 md:px-6 py-3 sm:py-4">
             Traditional Consultants
           </th>
-          <th scope="col" className="px-6 py-3">
+          <th scope="col" className="px-3 sm:px-4 md:px-6 py-3 sm:py-4">
             Big SIs
           </th>
-          <th scope="col" className="px-6 py-3 rounded-tr-lg">
+          <th
+            scope="col"
+            className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 rounded-tr-lg"
+          >
             Boutique Firms
           </th>
         </tr>
@@ -132,19 +153,30 @@ const DifferentiatorTable = () => (
           },
         ].map((row, index) => (
           <tr key={index} className="bg-black/20 border-b border-white/10">
-            <th scope="row" className="px-6 py-4 font-medium text-white">
+            <th
+              scope="row"
+              className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 font-medium text-white text-xs sm:text-sm"
+            >
               {row.capability}
             </th>
-            <td className="px-6 py-4 text-green-400 font-semibold">{row.thinkram}</td>
-            <td className="px-6 py-4">{row.consultants}</td>
-            <td className="px-6 py-4">{row.sis}</td>
-            <td className="px-6 py-4">{row.boutiques}</td>
+            <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 text-green-400 font-semibold text-xs sm:text-sm leading-relaxed">
+              {row.thinkram}
+            </td>
+            <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 text-xs sm:text-sm leading-relaxed">
+              {row.consultants}
+            </td>
+            <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 text-xs sm:text-sm leading-relaxed">
+              {row.sis}
+            </td>
+            <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 text-xs sm:text-sm leading-relaxed">
+              {row.boutiques}
+            </td>
           </tr>
         ))}
       </tbody>
     </table>
   </div>
-)
+);
 
 const TeamMemberCard = ({
   name,
@@ -153,30 +185,51 @@ const TeamMemberCard = ({
   imageUrl,
   linkedin,
   twitter,
-}: { name: string; title: string; bio: string; imageUrl: string; linkedin?: string; twitter?: string }) => (
-  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 text-center">
+}: {
+  name: string;
+  title: string;
+  bio: string;
+  imageUrl: string;
+  linkedin?: string;
+  twitter?: string;
+}) => (
+  <div className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 md:p-8 text-center">
     <img
       src={imageUrl || "/placeholder.svg"}
       alt={name}
-      className="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto mb-6 border-2 border-white/20 object-cover"
+      className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full mx-auto mb-4 sm:mb-6 border-2 border-white/20 object-cover"
     />
-    <h3 className="text-xl md:text-2xl font-semibold text-white mb-1 tracking-tight">{name}</h3>
-    <p className="text-red-400 text-sm mb-4">{title}</p>
-    <p className="text-gray-300 text-sm mb-6 leading-relaxed">{bio}</p>
-    <div className="flex justify-center space-x-4">
+    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-1 tracking-tight leading-tight">
+      {name}
+    </h3>
+    <p className="text-red-400 text-xs sm:text-sm mb-3 sm:mb-4">{title}</p>
+    <p className="text-gray-300 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed">
+      {bio}
+    </p>
+    <div className="flex justify-center space-x-6">
       {linkedin && (
-        <a href={linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+        <a
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-white w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors"
+        >
           <FontAwesomeIcon icon={faLinkedin} size="lg" />
         </a>
       )}
       {twitter && (
-        <a href={twitter} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+        <a
+          href={twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-white w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors"
+        >
           <FontAwesomeIcon icon={faXTwitter} size="lg" />
         </a>
       )}
     </div>
   </div>
-)
+);
 
 export default function AboutPage() {
   return (
@@ -187,8 +240,10 @@ export default function AboutPage() {
             Why <span className="text-red-500">Enterprises Choose Us</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 md:mb-16 leading-relaxed">
-            Think RAM bridges the strategy–execution gap with a human-led, AI-powered delivery model—built on 20+ years
-            of real-world transformation experience, tailored for Australia’s enterprise landscape.
+            Think RAM bridges the strategy–execution gap with a human-led,
+            AI-powered delivery model—built on 20+ years of real-world
+            transformation experience, tailored for Australia’s enterprise
+            landscape.
           </p>
         </div>
 
@@ -237,7 +292,8 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 bg-black/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center tracking-tight">
-            Think RAM Differentiator at a <span className="text-red-500">Glance</span>
+            Think RAM Differentiator at a{" "}
+            <span className="text-red-500">Glance</span>
           </h2>
           <DifferentiatorTable />
         </div>
@@ -302,15 +358,19 @@ export default function AboutPage() {
             Join Our <span className="text-red-500">Mission</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-300 mb-10">
-            We're looking for passionate individuals to help shape the future of human-AI collaboration.
+            We're looking for passionate individuals to help shape the future of
+            human-AI collaboration.
           </p>
           <Button
             variant="outline"
             size="lg"
             asChild
-            className="border-red-500 text-white hover:bg-red-500 hover:text-white px-10 py-6 text-base font-semibold bg-transparent"
+            className="border-red-500 text-white hover:bg-red-500 hover:text-white px-8 sm:px-10 py-4 sm:py-6 text-sm sm:text-base font-semibold bg-transparent min-h-[44px] w-auto"
           >
-            <a href="mailto:careers@thinkram.com">
+            <a
+              href="mailto:careers@thinkram.com"
+              className="flex items-center justify-center"
+            >
               <FontAwesomeIcon icon={faEnvelope} className="mr-2 h-4 w-4" />
               Contact Us
             </a>
@@ -318,5 +378,5 @@ export default function AboutPage() {
         </div>
       </section>
     </RedWaveLayout>
-  )
+  );
 }
