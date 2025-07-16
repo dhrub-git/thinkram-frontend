@@ -285,7 +285,7 @@ export default function MembershipPage() {
                     accelerate: enterpriseFeatures.accelerate,
                     modernise: enterpriseFeatures.modernise,
                   }}
-                  reportQuantities={{ realise: 4, accelerate: 4, modernise: 2 }}
+                  reportQuantities={{ realise: 4, accelerate: 3, modernise: 1 }}
                 />
               </div>
               <Button

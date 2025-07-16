@@ -403,7 +403,7 @@ export default function AboutPage() {
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
               <p className="text-4xl md:text-5xl font-bold text-red-500 mb-2">
-                100+
+                1000+
               </p>
               <p className="text-white font-semibold mb-2">Professionals</p>
               <p className="text-gray-400 text-sm">Mentored and empowered</p>

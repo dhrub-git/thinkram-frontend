@@ -444,7 +444,8 @@ export default function RedWaveLayout({
             </div>
             <div className="mt-12 border-t border-white/10 pt-8 text-center text-gray-400 text-sm">
               <p>
-                &copy; {new Date().getFullYear()} ThinkRam. All rights reserved.
+                &copy; {new Date().getFullYear()} Think RAM. All rights
+                reserved.
               </p>
             </div>
           </div>
